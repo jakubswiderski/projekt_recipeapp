@@ -1,6 +1,11 @@
 <?php 
     session_start();
 
+    if(isset($_POST['id_przepisu']))
+    {
+        $_SESSION['aktywny_przepis'] = $_POST['id_przepisu'];
+    }
+    
     if(!isset($_SESSION['czy_zalogowany'])) {
         header('Location: index.php?result=17');
         exit();
@@ -14,8 +19,6 @@
         $id_oceny = $_POST['ocena'];
 
         $zapytanie = $database -> query("INSERT INTO `opinie` (`id_przepisu`, `id_autora`, `id_oceny`, `komentarz`) values ($id_przepisu, $id_uzytkownika, $id_oceny, '$komentarz')");
-
-        header('Location: witryna_po_autoryzacji.php');
     }
 
 
@@ -57,8 +60,8 @@
         {
             require_once 'connection-config.php';
 
-            if(isset($_POST['wyswietl_przepis'])) {
-                $id = $_POST['id_przepisu'];
+            if((isset($_POST['wyswietl_przepis'])) || isset($_SESSION['aktywny_przepis'])) {
+                $id = $_SESSION['aktywny_przepis'];
 
                 $zapytanie = $database -> prepare("SELECT * FROM przepisy WHERE id like '$id'");
                 $zapytanie -> execute();
@@ -191,7 +194,7 @@
                                             <div class="author">'.$wynik['nick'].'</div>
                                             <div class="ocena">'; while($wynik['id_oceny']--){ echo '<img src="img/gwiazdka.png" width="20px">';} echo '
                                             </div>
-                                            <div class="date">'.$wynik['data_dodania'].'</div>
+                                            <div class="date">'.$wynik['data_opinii'].'</div>
                                         </div>
                                         <span><b>Napisał/Napisała:</b></span>
                                         <div class="comment-content"><i>'.$wynik['komentarz'].'</i></div>
