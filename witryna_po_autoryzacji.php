@@ -121,7 +121,7 @@
                 foreach($zapytanie as $wynik)
                 { 
                     echo '<div class="card recipe-card col-xl-3">
-                            <img src="img/test.png" class="card-img-top" alt="zdjęcie jedzenia">
+                            <img src="recipePhotos/'.$wynik['id'].'.png" class="card-img-top" alt="zdjęcie jedzenia">
                             <div class="card-body">
                               <h5 class="card-title">'.$wynik['nazwa'].'</h5>
                               <p class="card-text">'.$wynik['kategoria'].'</p>
@@ -143,7 +143,7 @@
                 foreach($zapytanie as $wynik)
                 { 
                     echo '<div class="card recipe-card col-xl-3">
-                            <img src="img/test.png" class="card-img-top" alt="zdjęcie jedzenia">
+                            <img src="recipePhotos/'.$wynik['id'].'.png" class="card-img-top" alt="zdjęcie jedzenia">
                             <div class="card-body">
                               <h5 class="card-title">'.$wynik['nazwa'].'</h5>
                               <p class="card-text">'.$wynik['kategoria'].'</p>

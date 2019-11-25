@@ -105,6 +105,16 @@
                 </section>
                 </div>
             </section>
+
+            <section class="account-panel">
+              <div class="container">
+                <h1>Ustawienia konta</h1>
+                <p>Podstawowe informacje o Twoim koncie</p>
+                <article class="account-settings">
+                    
+                </article>
+              </div>
+            </section>
         </section>
             
         <?php
