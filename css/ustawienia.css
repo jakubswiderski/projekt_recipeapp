@@ -93,6 +93,29 @@
     padding-top: 10px;
 }
 
+.content .account-panel {
+    background-color: rgba(255, 255, 255, 0.884);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.content .account-panel .account-settings {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 45px 85px;
+    background: white;
+    border: 1px solid black;
+    border-radius: 15px;
+    background-color: #ffffffd3;
+}
+
 .footer-panel {
     background-image: url("../img/footer-background.png");
     background-size: cover;

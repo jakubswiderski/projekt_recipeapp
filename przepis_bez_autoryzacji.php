@@ -1,6 +1,6 @@
 <?php 
   session_start();
-
+ 
   if((isset($_SESSION['czy_zalogowany'])) && ($_SESSION['czy_zalogowany']==true)) {
     header('Location: witryna_po_autoryzacji.php');
     exit();
@@ -56,14 +56,16 @@
                     <div class="container">
                         <article class="recipe-panel">
 
-                            <section class="recipe-title col-12">
-                                <h3><?php echo $wynik['nazwa']; ?></h3>
-                                <h5><?php echo $wynik['kategoria']; ?></h5>
-                            </section>
+                            <header class="recipe-header">
+                                <section class="recipe-title col-12 col-lg-6">
+                                    <h3><?php echo $wynik['nazwa']; ?></h3>
+                                    <h5><?php echo $wynik['kategoria']; ?></h5>
+                                </section>
 
-                            <section class="recipe-image col-12 col-lg-10 offset-lg-1">
-                                <img src="recipePhotos/<?php echo $wynik['id']; ?>.png" alt="<?php echo $wynik['nazwa']; ?>" class="img-fluid">
-                            </section>
+                                <section class="recipe-image col-12 col-lg-6">
+                                    <img src="recipePhotos/<?php echo $wynik['id']; ?>.png" alt="<?php echo $wynik['nazwa']; ?>" class="img-fluid">
+                                </section>
+                            </header>
 
                             <section class="recipe-info col-12">
                                 <div class="col-6 col-lg-3">

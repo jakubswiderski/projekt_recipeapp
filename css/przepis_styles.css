@@ -23,6 +23,15 @@ body {
     min-height: calc(100vh - 91px - 100px);
 }
 
+.recipe-panel .recipe-header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
 .recipe-panel .recipe-title {
     display: flex;
     flex-direction: column;
@@ -43,6 +52,10 @@ body {
 
 .recipe-panel .recipe-image {
     padding-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(1.2);
 }
 
 .recipe-panel .recipe-info {
@@ -52,6 +65,7 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     text-align: center;
+    padding-top: 30px;
 }
 
 .recipe-panel .recipe-info div {
