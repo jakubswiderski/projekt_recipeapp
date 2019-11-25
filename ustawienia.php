@@ -15,6 +15,7 @@
     <link rel="shortcut icon" href="img/favicon.png">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/ustawienia.css">
+    <link href="https://fonts.googleapis.com/css?family=McLaren|Patrick+Hand|Ubuntu+Mono&display=swap" rel="stylesheet">
     
 </head>
 <body>
@@ -77,23 +78,24 @@
             </header>  
 
             <section class="recipes-panel">
+              <div class="container">
                 <h1>Twoje przepisy</h1>
                 <p>Lista dodanych przez Ciebie przepisów</p>
                 <section class="recipes">
                     <?php
-                    $zapytanie = $database->query("SELECT * FROM przepisy");
+                    $id = $_SESSION['id'];
+                    $zapytanie = $database -> query("SELECT * FROM przepisy WHERE autor = $id");
                     echo '<ul>';
                     foreach($zapytanie as $wynik)
                     { 
-                        echo '<div class="card recipe-card col-xl-3">
-                                <img src="img/test.png" class="card-img-top" alt="zdjęcie jedzenia">
+                        echo '<div class="card col-md-4 col-lg-3">
+                                <img src="img/test.png" class="card-img-top" alt="jedzenie">
                                 <div class="card-body">
-                                  <h5 class="card-title">'.$wynik['nazwa'].'</h5>
-                                  <p class="card-text">'.$wynik['kategoria'].'</p>
-                                  <form action="przepis_z_autoryzacja.php" method="post">
-                                    <input type="hidden" name="id_przepisu" value="'.$wynik['id'].'">
-                                    <input type="submit" class="btn btn-primary" name="wyswietl_przepis" value="Sprawdź przepis">
-                                  </form>
+                                  <h5>'.$wynik['nazwa'].'</h5>
+                                  <div class="card-buttons">
+                                    <a href="edycja_przepisu.php"><button class="btn btn-primary">Edytuj</button></a>
+                                    <a href="usuwanie_przepisu.php"><button class="btn btn-danger">Usuń</button><a>
+                                  </div>
                                 </div>
                               </div>';
                     }
@@ -101,6 +103,7 @@
                     echo '</ul>';
                     ?>
                 </section>
+                </div>
             </section>
         </section>
             
