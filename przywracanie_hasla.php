@@ -71,7 +71,10 @@
         }
         catch(PDOException $error)
         {
-           echo $error->getMessage();
+            echo '
+            <div class="alert alert-danger" role="alert">
+              Wystąpił błąd! Przepraszamy za utrudnienia.
+            </div>';
         }
     ?> 
     <section class="recovery-panel">

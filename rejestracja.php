@@ -1,3 +1,12 @@
+<?php 
+    session_start();
+
+    if(isset($_SESSION['czy_zalogowany'])) {
+        header('Location: witryna_po_autoryzacji.php');
+        exit();
+    }
+?>
+
 <!DOCTYPE HTML>
 <html>
   <head>
@@ -32,7 +41,6 @@
         </div>
     </nav>
   <?php 
-    session_start();
     try
     {
         require_once 'result.php';
@@ -205,7 +213,10 @@
     }
     catch(PDOException $error)
     {
-        echo $error->getMessage();
+        echo '
+        <div class="alert alert-danger" role="alert">
+          Wystąpił błąd! Przepraszamy za utrudnienia.
+        </div>';
     }
 ?>
 

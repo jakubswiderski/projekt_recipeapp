@@ -8,50 +8,37 @@
     text-align: center;
 }
 
-.login-panel {
-    background-image: url("../img/login-background.png");
+.account-panel {
+    background-image: url("../img/login-background-75.png");
     background-size: cover;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 650px;
     padding: 30px;
 }
 
-.login-panel > article {
-    max-width: 600px;
-    color: white;
-    margin-right: 90px;
-    /* padding: 15px;
-    border: 0px solid black;
-    background-color: #ffffff6b; */
-}
-
-.login-panel > section  {
+.account-panel .account-info {
+    background-color: rgba(255, 255, 255, 0.884);
+    padding: 30px;
     display: flex;
-    flex-direction: column;
-    padding: 40px;
-    width: 450px;
-    background-color: white;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
-.login-panel > section button {
-    margin-top: 10px;
-    width: 100%;
+.account-panel .account-info h1 {
+    padding-top: 30px;
+    padding-bottom: 5px;
 }
 
-@media (max-width: 991px) {
-    .login-panel {
-        flex-direction: column;
-        padding-bottom: 100px;
-    }
-    .login-panel > article {
-        text-align: center;
-        margin: 150px 0 100px 0;
-    }
-    .login-panel > form {
-        margin-bottom: 100px;
-    }
+.account-panel .account-info button {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.account-panel .account-info .account-photo {
+    padding: 30px;
 }
 
 .recipes-cards {

@@ -1,10 +1,24 @@
 <?php 
-  session_start();
+    session_start();
 
-  if((isset($_SESSION['czy_zalogowany'])) && ($_SESSION['czy_zalogowany']==true)) {
-    header('Location: witryna_po_autoryzacji.php');
-    exit();
-  }
+    if(!isset($_SESSION['czy_zalogowany'])) {
+        header('Location: index.php?result=17');
+        exit();
+    }
+    require_once 'connection-config.php';
+    if(isset($_POST['add-comment']))
+    {
+        $komentarz = $_POST['komentarz'];
+        $id_uzytkownika = $_SESSION['id'];
+        $id_przepisu = $_POST['id_przepisu'];
+        $id_oceny = $_POST['ocena'];
+
+        $zapytanie = $database -> query("INSERT INTO `opinie` (`id_przepisu`, `id_autora`, `id_oceny`, `komentarz`) values ($id_przepisu, $id_uzytkownika, $id_oceny, '$komentarz')");
+
+        header('Location: witryna_po_autoryzacji.php');
+    }
+
+
 ?>
 
 <!DOCTYPE HTML>
@@ -30,10 +44,10 @@
                 <a class="nav-link" href="index.php#recipes-ref">Przepisy</a>
             </li>
             <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-              <a class="nav-link" href="rejestracja.php">Rejestracja</a>
+                <a class="nav-link" href="#">Konto</a>
             </li>
             <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-                <a class="nav-link" href="index.php#login-ref">Logowanie</a>
+                <a class="nav-link" href="wylogowywanie.php"><button class="btn btn-outline-secondary btn-sm">Wyloguj się</button></a>
             </li>
           </ul>
         </div>
@@ -132,15 +146,37 @@
                             </section>
 
                             <section class="recipe-buttons">
-                                <input type="button" class="btn btn-info" onclick="window.print()" value="Wydrukuj przepis">
+                                <input type="button" class="btn btn-info col-6" onclick="window.print()" value="Wydrukuj przepis">
+                                <?php if($id_uzytkownika == $_SESSION['id']) echo '<input type="button" class="btn btn-warning col-6" value="Edytuj przepis"></a>'; ?>
                             </section>
                         </article>
 
                         <section class="comments-box">
                             <header>
                                 <h2>Komentarze</h2>
-                                <h4>Aby dodać komentarz musisz być zalogowany!</h4>
+                                <h4>Masz jakieś uwagi dotyczące przepisu? A może chcesz się podzielić opinią na jego temat? Możesz to zrobić w komentarzu poniżej :)</h4>
                             </header>
+
+                            <section class="form-comment">
+                                <form method="post">
+                                    <label for="ocena">Ocena</label>
+                                    <select name="ocena" id="ocena">
+                                        <?php 
+                                            $zapytanie = $database -> query('SELECT * FROM oceny');
+                                            
+                                            while($wynik = $zapytanie->fetch())
+                                            {
+                                                echo '<option value="'.$wynik['ocena'].'">'.$wynik['ocena'].'</option>';
+                                            }
+                                            $zapytanie->closeCursor();
+                                            
+                                        ?>
+                                    </select>
+                                    <input type="hidden" name="id_przepisu" value="<?php echo $id; ?>">
+                                    <input type="text" name="komentarz" required>
+                                    <input type="submit" class="btn btn-secondary" value="Dodaj komentarz" name="add-comment">
+                                </form>
+                            </section>
 
                             <?php 
                                 $zapytanie = $database->prepare("SELECT * FROM opinie inner join uzytkownicy on (opinie.id_autora = uzytkownicy.id) WHERE id_przepisu like '$id'");
@@ -170,7 +206,7 @@
                 }
                 else
                 {
-                    header('Location: index.php?result=14');
+                    header('Location: witryna_po_autoryzacji.php?result=14');
                     exit();
                 }
             }
@@ -183,6 +219,8 @@
               Wystąpił błąd! Przepraszamy za utrudnienia.
             </div>';
         }
+        
+
     ?> 
     <footer class="footer-panel">
         Wszelkie prawa zastrzeżone &copy RecipeApp 2019

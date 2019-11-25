@@ -43,7 +43,19 @@
           break;
         case 14:
           echo '<div class="alert alert-danger" role="alert" style="margin:0;">Nie znaleziono takiego przepisu w bazie!</div>';
-          break;
+          break;  
+        case 15:
+          echo '<div class="alert alert-danger" role="alert" style="margin:0;">Nie udało się dodać przepisu do bazy!</div>';
+          break; 
+        case 16:
+          echo '<div class="alert alert-success" role="alert" style="margin:0;">Pomyślnie dodano przepis do bazy!</div>';
+          break; 
+        case 17:
+          echo '<div class="alert alert-success" role="alert" style="margin:0;">Nie jesteś zalogowany!</div>';
+          break;  
+        case 18:
+          echo '<div class="alert alert-success" role="alert" style="margin:0;">Pomyślnie dodano komentarz!</div>';
+          break;   
         default:
           echo 'Nieznany błąd, spróbuj ponownie!';
           break;

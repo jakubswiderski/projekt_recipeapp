@@ -1,0 +1,92 @@
+.navbar-items {
+    padding-right: 30px;
+}
+
+.navbar-items > li {
+    padding: 0px 15px;
+    font-size: 19px;
+    text-align: center;
+}
+
+.content {
+    background-image: url("../img/login-background-75.png");
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    min-height: calc(100vh - 91px - 100px);
+}
+
+.info-panel {
+    background-color: rgba(255, 255, 255, 0.884);
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.settings-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.settings-info h1 {
+    padding-top: 30px;
+    padding-bottom: 5px;
+}
+
+.settings-info button {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.settings-info .settings-photo {
+    padding: 30px;
+    max-width: 400px;
+}
+
+.recipes-panel {
+    background-color: rgba(255, 255, 255, 0.884);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.recipes-panel h1 {
+    padding-top: 45px;
+}
+
+.recipes-panel span {
+    padding-bottom: 45px;
+}
+
+.recipes-panel .recipes {
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.footer-panel {
+    background-image: url("../img/footer-background.png");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+    padding: 30px;
+    font-size: 16px;
+    font-family: 'McLaren', cursive;
+}

@@ -31,7 +31,7 @@
 
             if($_SESSION['klucz_dostepu']=='Aktywny') {
                 $_SESSION['czy_zalogowany'] = true;
-                header('Location: witryna-po-autoryzacji.php');
+                header('Location: witryna_po_autoryzacji.php');
                 exit();
             }
             else {
@@ -46,6 +46,9 @@
     }
     catch(PDOException $error)
     {
-       echo $error->getMessage();
+        echo '
+        <div class="alert alert-danger" role="alert">
+          Wystąpił błąd! Przepraszamy za utrudnienia.
+        </div>';
     }
 ?>

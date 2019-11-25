@@ -2,7 +2,7 @@
   session_start();
 
   if((isset($_SESSION['czy_zalogowany'])) && ($_SESSION['czy_zalogowany']==true)) {
-    header('Location: witryna-po-autoryzacji.php');
+    header('Location: witryna_po_autoryzacji.php');
     exit();
   }
   
@@ -53,12 +53,12 @@
       require_once 'result.php';
     ?>
     
-    <header class="login-panel">
+    <header class="login-panel" id="login-ref">
       <article>
         <h1>Hello World!</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure amet adipisci tenetur dolores exercitationem voluptatum accusamus laudantium distinctio ipsa, facere repellat nesciunt iusto libero perspiciatis eaque qui corporis possimus autem. Nemo iste adipisci delectus quos vel similique eveniet dolorem, ipsum non esse rem, vero neque molestiae amet provident natus atque.</p>
       </article>
-      <section id="login-ref">
+      <section>
         <form action="logowanie.php" method="post">
           <div class="form-group">
             <label for="exampleInputEmail1">Adres e-mail</label>
@@ -77,29 +77,7 @@
       </section>
     </header>
         
-    <section class="recipes-cards"> 
-      
-      <!-- <nav>
-        <div class="container">
-          <h3 id="category-ref">Kategorie</h3>
-          <h5>Możesz wyświetlić przepisy według interesującej Cię kategorii</h5>
-          <?php 
-              // $zapytanie = $database->query('SELECT * FROM kategorie');
-              // echo '<ul>';
-              // foreach($zapytanie as $wynik)
-              // { 
-              //     echo '<div class="card category-card col-xl-2">
-              //     <a href="index.php?category='.$wynik['nazwa'].'"><div class="card-body">
-              //               <li>'.$wynik['nazwa'].'</li>
-              //             </div></a>
-              //           </div>';
-              // }
-              // $zapytanie->closeCursor();
-              // echo '</ul>';
-          ?>
-        </div>
-      </nav>  -->
-      
+    <section class="recipes-cards">     
       <article>
           <div class="container">
             <h3 id="recipes-ref">Przepisy</h3>
@@ -108,7 +86,7 @@
               <select name="selected-category">
                 <option value="all" <?php if((isset($_POST['selected-category']))&&($_POST['selected-category']=='all')) echo 'selected'; ?>>Wszystkie kategorie</option>
                 <?php
-                  $zapytanie = $database->query('SELECT * FROM kategorie');
+                  $zapytanie = $database->query('SELECT * FROM kategoria');
                   foreach($zapytanie as $wynik)
                   { 
                     ?>
@@ -149,7 +127,10 @@
                           <div class="card-body">
                             <h5 class="card-title">'.$wynik['nazwa'].'</h5>
                             <p class="card-text">'.$wynik['kategoria'].'</p>
-                            <a href="#" class="btn btn-primary">Sprawdź przepis</a>
+                            <form action="przepis_bez_autoryzacji.php" method="post">
+                              <input type="hidden" name="id_przepisu" value="'.$wynik['id'].'">
+                              <input type="submit" class="btn btn-primary" name="wyswietl_przepis" value="Sprawdź przepis">
+                            </form>
                           </div>
                         </div>';
               }
@@ -191,8 +172,10 @@
       }
       catch(PDOException $error)
       {
-          //echo $error->getMessage();
-          echo 'Wystąpił błąd z bazą danych!';
+        echo '
+        <div class="alert alert-danger" role="alert">
+          Wystąpił błąd! Przepraszamy za utrudnienia.
+        </div>';
       }
     ?>
     <script src="js/jquery.min.js"></script>
