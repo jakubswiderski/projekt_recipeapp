@@ -44,11 +44,20 @@
               <a class="nav-link" href="index.php">Home</a>
             </li>
             <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-                <a class="nav-link" href="index.php#recipes-ref">Przepisy</a>
+                <a class="nav-link" href="witryna_po_autoryzacji.php#recipes-ref">Przepisy</a>
             </li>
             <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-                <a class="nav-link" href="#">Konto</a>
+                <a class="nav-link" href="ustawienia.php">Konto</a>
             </li>
+            <?php
+            if($_SESSION['typ'] == "Moderator" || $_SESSION['typ'] == "Administrator")
+            {
+              echo '
+              <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+                  <a class="nav-link" href="#"><span style="color: #D39486;">Panel administracyjny</span></a>
+              </li>';
+            }
+            ?>
             <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
                 <a class="nav-link" href="wylogowywanie.php"><button class="btn btn-outline-secondary btn-sm">Wyloguj się</button></a>
             </li>

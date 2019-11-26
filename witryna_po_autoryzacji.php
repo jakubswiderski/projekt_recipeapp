@@ -39,7 +39,7 @@
             {
               echo '
               <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-                  <a class="nav-link" href="#"><span style="color: #D39486;">Panel administracyjny</span></a>
+                  <a class="nav-link" href="panel_administracyjny.php"><span style="color: #D39486;">Panel administracyjny</span></a>
               </li>';
             }
             ?>

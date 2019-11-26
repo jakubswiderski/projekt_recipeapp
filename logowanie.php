@@ -28,6 +28,7 @@
             $_SESSION['typ'] = $user['typ'];
             $_SESSION['klucz_dostepu'] = $user['klucz_dostepu'];
             $_SESSION['kod_przywracania'] = $user['kod_przywracania'];
+            $_SESSION['data_dodania'] = $user['data_dodania'];
 
             if($_SESSION['klucz_dostepu']=='Aktywny') {
                 $_SESSION['czy_zalogowany'] = true;

@@ -69,7 +69,7 @@
     padding-bottom: 30px;
 }
 
-.recipes-panel .recipes ul {
+.recipes-panel .recipes .wrap {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -79,19 +79,30 @@
     padding: 30px;
 }
 
-.recipes-panel .recipes ul .card {
+.recipes-panel .recipes .wrap .card {
     padding: 10px;
     margin: 5px;
+    min-height: 450px;
 }
 
-.recipes-panel .recipes ul .card .card-body h5 {
+.recipes-panel .recipes .wrap .card .card-body h5 {
     min-height: 48px;
     font-family: 'McLaren', cursive;
 }
 
-.recipes-panel .recipes ul .card .card-body .card-buttons {
-    padding-top: 10px;
+.recipes-panel .recipes .wrap .card .card-body .card-buttons {
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
+
+.recipes-panel .recipes .wrap .card .card-body .card-buttons form {
+    padding-top: 5px;
+}
+
 
 .content .account-panel {
     background-color: rgba(255, 255, 255, 0.884);
@@ -104,6 +115,14 @@
     margin-top: 30px;
 }
 
+.content .account-panel h1 {
+    padding-top: 50px;   
+}
+
+.content .account-panel p {
+    padding-bottom: 50px;   
+}
+
 .content .account-panel .account-settings {
     display: flex;
     flex-direction: column;
@@ -114,6 +133,23 @@
     border: 1px solid black;
     border-radius: 15px;
     background-color: #ffffffd3;
+}
+
+.content .account-panel .account-settings h3 {
+    padding-top: 30px;
+}
+
+.opinion-panel h5 {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.card {
+    margin-top: 5px;
+}
+
+.opinion-panel p {
+    margin: 0;
 }
 
 .footer-panel {
