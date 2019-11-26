@@ -58,12 +58,12 @@ create table `przepisy` (
 	ile_porcji int not null,
 	ile_kalorii int not null,
 	kategoria varchar(25) not null,
-	czy_aktywne bit not null,
+	czy_aktywne bit not null default 0,
 	data_dodania datetime,
 	data_modyfikacji datetime
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
--- CREATE  INDEX "nazwa" ON przepisy ("nazwa"); 
--- ALTER TABLE "przepisy" ADD INDEX (nazwa);		
+CREATE  INDEX przepsiy ON przepisy (nazwa); 
+	
 
 alter table uzytkownicy add constraint typ_fkey foreign key (typ) references typ_uzytkownika (nazwa) on delete cascade on update cascade;
 alter table przepisy add constraint kategoria_fkey foreign key (kategoria) references kategoria (nazwa) on delete cascade on update cascade;
