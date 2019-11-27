@@ -113,9 +113,9 @@
                 $numOfResults = $_POST['num-results'];
 
                 if($category == 'all')
-                  $zapytanie = $database->query("SELECT * FROM przepisy limit $numOfResults");
+                  $zapytanie = $database->query("SELECT * FROM przepisy WHERE `czy_aktywne`=1 limit $numOfResults");
                 else
-                  $zapytanie = $database->query("SELECT * FROM przepisy where kategoria like '$category' limit $numOfResults");
+                  $zapytanie = $database->query("SELECT * FROM przepisy where kategoria like '$category' AND `czy_aktywne`=1 limit $numOfResults");
 
                 echo '<ul>';
                 foreach($zapytanie as $wynik)
@@ -132,12 +132,11 @@
                             </div>
                           </div>';
                 }
-                //$zapytanie->closeCursor();
                 echo '</ul>';
               } 
               else
               {
-                $zapytanie = $database->query("SELECT * FROM przepisy");
+                $zapytanie = $database->query("SELECT * FROM przepisy WHERE `czy_aktywne`=1");
 
                 echo '<ul>';
                 foreach($zapytanie as $wynik)

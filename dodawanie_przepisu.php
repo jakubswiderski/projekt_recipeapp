@@ -158,6 +158,12 @@
                               <div class="valid-feedback">W porządku!</div>
                               <div class="invalid-feedback">Niepoprawne dane!</div>
                           </div>
+                          <div class="form-group col-12 col-lg-6">
+                              <label for="fileToUpload">Zdjęcie</label><br>
+                              <input type="file" name="fileToUpload" id="fileToUpload">
+                              <div class="valid-feedback">W porządku!</div>
+                              <div class="invalid-feedback">Niepoprawne dane!</div>
+                          </div>
                         </div>
                         <div class="form-buttons">
                           <div class="col-12"><button type="submit" class="btn btn-success btn-block" name="add-recipe">Dodaj przepis</button></div>

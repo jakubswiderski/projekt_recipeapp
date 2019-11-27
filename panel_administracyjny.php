@@ -61,11 +61,97 @@
         ?>
 
         <main>
-            <div class="container">
-                <section class="users-panel">
-                    
+          <div class="container">
+            <section class="recipes-panel">
+              <div class="container">
+                <h1>Przepisy oczekujące na zatwierdzenie</h1>
+                <p>Lista oczekujących przepisów dodanych przez użytkowników</p>
+                <section class="recipes">
+                  <?php
+                    if(isset($_POST['usuwanie_przepisu']))
+                    {
+                      $id_usuwania = $_POST['id_usuwania'];
+                      $zapytanie = $database -> exec("DELETE FROM `przepisy` WHERE `id` = '$id_usuwania'");
+                    }
+
+                    if(isset($_POST['zatwierdzanie_przepisu']))
+                    {
+                      $id_zatwierdzenia = $_POST['id_zatwierdzenia'];
+                      $zapytanie = $database -> exec("UPDATE przepisy SET `czy_aktywne`=1 WHERE `id` = '$id_zatwierdzenia'");
+                    }
+
+                    $zapytanie = $database -> query("SELECT * FROM przepisy WHERE czy_aktywne = 0");
+                    echo '<div class="wrap">';
+                    foreach($zapytanie as $wynik)
+                    { 
+                      echo '<div class="card col-md-4 col-lg-3">
+                              <img src="recipePhotos/'.$wynik['id'].'.png" class="card-img-top" alt="jedzenie">
+                              <div class="card-body">
+                                <h5>'.$wynik['nazwa'].'</h5>
+                                <div class="card-buttons">
+                                  <form action="przepis_z_autoryzacja.php" method="post">
+                                    <input type="hidden" name="id_przepisu" value="'.$wynik['id'].'">
+                                    <input type="submit" class="btn btn-primary" name="wyswietl_przepis" value="Sprawdź przepis">
+                                  </form>
+                                  <form method="post">
+                                    <input type="hidden" name="id_zatwierdzenia" value="'.$wynik['id'].'">
+                                    <input type="submit" class="btn btn-success" value="Zatwierdź przepis" name="zatwierdzanie_przepisu">
+                                  </form>
+                                  <form method="post">
+                                    <input type="hidden" name="id_usuwania" value="'.$wynik['id'].'">
+                                    <input type="submit" class="btn btn-danger" value="Odrzuć przepis" name="usuwanie_przepisu">
+                                  </form>
+                                </div>
+                              </div>
+                            </div>';
+                    }
+                    echo '</div>';
+                  ?>
                 </section>
-            </div>
+              </div>
+            </section>
+          </div>
+
+          <div class="container">
+            <section class="recipes-panel">
+              <div class="container">
+                <h1>Aktywne przepisy użytkowników</h1>
+                <p>Lista zatwierdzonych przepisów dodanych przez użytkowników</p>
+                <section class="recipes">
+                  <?php
+                    if(isset($_POST['usuwanie_przepisu']))
+                    {
+                      $id_usuwania = $_POST['id_usuwania'];
+                      $zapytanie = $database -> exec("DELETE FROM `przepisy` WHERE `id` = '$id_usuwania'");
+                    }
+
+                    $zapytanie = $database -> query("SELECT * FROM przepisy WHERE czy_aktywne = 1");
+                    echo '<div class="wrap">';
+                    foreach($zapytanie as $wynik)
+                    { 
+                      echo '<div class="card col-md-4 col-lg-3">
+                              <img src="recipePhotos/'.$wynik['id'].'.png" class="card-img-top" alt="jedzenie">
+                              <div class="card-body">
+                                <h5>'.$wynik['nazwa'].'</h5>
+                                <div class="card-buttons">
+                                  <form action="przepis_z_autoryzacja.php" method="post">
+                                    <input type="hidden" name="id_przepisu" value="'.$wynik['id'].'">
+                                    <input type="submit" class="btn btn-primary" name="wyswietl_przepis" value="Sprawdź przepis">
+                                  </form>
+                                  <form method="post">
+                                    <input type="hidden" name="id_usuwania" value="'.$wynik['id'].'">
+                                    <input type="submit" class="btn btn-danger" value="Usuń przepis" name="usuwanie_przepisu">
+                                  </form>
+                                </div>
+                              </div>
+                            </div>';
+                    }
+                    echo '</div>';
+                  ?>
+                </section>
+              </div>
+            </section>
+          </div>
         </main>
         <?php
       }
