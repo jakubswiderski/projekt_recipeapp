@@ -62,10 +62,10 @@ create table `przepisy` (
 	data_dodania datetime,
 	data_modyfikacji datetime
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
-CREATE  INDEX i_naz_prze ON przepisy (nazwa);
-CREATE  INDEX i_kat_prze ON przepisy (kategoria); 
-	
 
+CREATE INDEX i_naz_prze ON przepisy (nazwa);
+CREATE INDEX i_kat_prze ON przepisy (kategoria); 
+	
 alter table uzytkownicy add constraint typ_fkey foreign key (typ) references typ_uzytkownika (nazwa) on delete cascade on update cascade;
 alter table przepisy add constraint kategoria_fkey foreign key (kategoria) references kategoria (nazwa) on delete cascade on update cascade;
 alter table przepisy add constraint autor_fkey foreign key (autor) references uzytkownicy (id) on delete cascade on update cascade;
@@ -201,15 +201,34 @@ insert into opinie (id_przepisu, id_autora, id_oceny, komentarz, data_opinii) va
 	(2, 3, 3, "moglo by byc lepsze", now()),
 	(3, 4, 2, "nie smakowało mi", now()),
 	(4, 5, 1, "obrzydliwe", now()),
-	(5, 1, 4, "Bardzo dobry przepis ale nie przepis nie jest jasny", now()),
+	(5, 1, 4, "Bardzo dobry przepis ale nie przepis nie jest jasny ;/" , now()),
 	(6, 2, 4, "Smaczne ale jadłem lepsze", now()),
 	(7, 3, 5, "Najlepsze co w życiu jadłem tak", now()),
 	(8, 4, 5, "Bardzo dobre", now()),
 	(9, 5, 2, "Szału nie ma, **** nie urywa", now()),
-	(10, 1, 1, "Fujka", now());
-
+	(10, 6, 5, "Bardzo dobre gorąco wszytstkim polecam! :D", now()),
+	(11, 4, 4, "Fajne ale moglo by być lezpsze.", now()),
+	(12, 7, 5, "Zrobiłem swojemu wynkowi i bardzo mu smakowało. Gorąco polecam i pozdrawiam.", now()),
+	(13, 3, 4, "Mi smakowało ale Mariuszowi już nie", now()),
+	(14, 8, 5, "Patryk mówił ze bardzo dobre ale ja mu do konca nie wieże XD", now()),
+	(15, 2, 5, "Nie mam już pomysłów ale daje 5 bo fajna stronka", now()),
+	(16, 5, 4, "Jakiś fajny długi komentarz na 4, ale jest juz 8 godzina i nie mam już wg pomysłu wiec pisze byle co", now()),
+	(17, 2, 4, "Mariusz nie potrafi zrobić bazy hahaha", now()),
+	(18, 3, 4, "Cały czas mu błędy wywala", now()),
+	(19, 5, 5, "OOOO Pychotka", now()),
+	(20, 4, 5, "Tak wpadłem na pomysł nagle", now()),
+	(21, 4, 4, "Nie no to wcześniej napisałem", now()),
+	(22, 7, 5, "O mariuszowi działają relacje", now()),
+	(23, 8, 4, "hahahahah chce usuwać baze jak ją dopiero dodał", now()),
+	(24, 8, 5, "Zrobiłam już kilka razy . Pychotka ...powiedział małżonek :)", now()),
+	(25, 5, 4, "Tak naprawde nie robiłem ale to fajny pomysł na komentarz", now()),
+	(26, 5, 5, "Patryk jest fajny, lubie go", now()),
+	(27, 1, 4, "Mariusza trochę też", now()),
+	(28, 3, 4, "Jutro nowe zdjecie na ig Mariusza", now()),
+	(29, 5, 5, "Photoemperor na ig polecam zaobserwować bo ładne zdjęca", now()),
+	(30, 2, 4, "Żart XD", now()),
+	(1, 7, 5, "Koniec :D", now());
 	
-
 DELIMITER $$
 CREATE TRIGGER data_dod_uz
 BEFORE INSERT ON uzytkownicy
