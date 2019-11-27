@@ -160,8 +160,14 @@
                             </section>
 
                             <section class="recipe-buttons">
-                                <input type="button" class="btn btn-info col-6" onclick="window.print()" value="Wydrukuj przepis">
-                                <?php if($id_uzytkownika == $_SESSION['id']) echo '<input type="button" class="btn btn-warning col-6" value="Edytuj przepis"></a>'; ?>
+                                <input type="button" class="btn btn-info" onclick="window.print()" value="Wydrukuj przepis">
+                                <?php if($id_uzytkownika == $_SESSION['id']) 
+                                    echo '
+                                    <form method="post" action="edycja_przepisu.php">
+                                      <input type="hidden" name="id_edycji" value="'.$wynik['id'].'">
+                                      <input type="submit" class="btn btn-warning" value="Edytuj przepis" name="edycja_przepisu">
+                                    </form>';
+                                ?>
                             </section>
                         </article>
 

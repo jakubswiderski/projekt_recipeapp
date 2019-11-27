@@ -56,6 +56,12 @@
         case 18:
           echo '<div class="alert alert-success" role="alert" style="margin:0;">Pomyślnie dodano komentarz!</div>';
           break;   
+        case 19:
+          echo '<div class="alert alert-success" role="alert" style="margin:0;">Pomyślnie zmodyfikowano przepis!</div>';
+          break; 
+        case 20:
+          echo '<div class="alert alert-danger" role="alert" style="margin:0;">Wystąpił błąd podczas aktualizacji przepisu!</div>';
+          break; 
         default:
           echo 'Nieznany błąd, spróbuj ponownie!';
           break;
