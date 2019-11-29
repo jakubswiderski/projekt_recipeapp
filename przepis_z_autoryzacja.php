@@ -54,7 +54,7 @@
             {
               echo '
               <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-                  <a class="nav-link" href="#"><span style="color: #D39486;">Panel administracyjny</span></a>
+                  <a class="nav-link" href="panel_administracyjny.php"><span style="color: #D39486;">Panel administracyjny</span></a>
               </li>';
             }
             ?>
@@ -149,10 +149,10 @@
                                         $id_uzytkownika = $wynik['autor'];
                                         $zapytanie = $database->prepare("SELECT * FROM uzytkownicy WHERE id like '$id_uzytkownika'");
                                         $zapytanie -> execute();
-                                        $wynik = $zapytanie -> fetch();
+                                        $result = $zapytanie -> fetch();
                                         $ile_rekordow = $zapytanie->rowCount();
                                         if($ile_rekordow > 0) {
-                                            echo '<span>'.$wynik['nick'].'</span>';
+                                            echo '<span>'.$result['nick'].'</span>';
                                         }
                                     ?>
                                 </div>

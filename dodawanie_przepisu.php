@@ -130,7 +130,7 @@
                           <div class="form-group col-12 col-lg-6">
                               <label for="poziom_trudnosci">Poziom trudności</label>
                               <select name="poziom_trudnosci" id="poziom_trudnosci" class="form-control">
-                                <option selected="selected">Wybierz poziom trudności</option>
+                                <option selected="selected" required>Wybierz poziom trudności</option>
                                 <?php 
                                   $zapytanie = $database -> query('SELECT * from poziom_trudnosci');
 

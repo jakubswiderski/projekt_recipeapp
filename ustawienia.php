@@ -95,7 +95,7 @@
                     foreach($zapytanie as $wynik)
                     { 
                         echo '<div class="card col-md-4 col-lg-3">
-                                <img src="img/test.png" class="card-img-top" alt="jedzenie">
+                                <img src="recipePhotos/'.$wynik['id'].'.png" class="card-img-top" alt="jedzenie">
                                 <div class="card-body">
                                   <h5>'.$wynik['nazwa'].'</h5>
                                   <div class="card-buttons">
@@ -161,7 +161,7 @@
 
             <section class="account-panel">
               <div class="container">
-                <h1>Ustawienia konta</h1>
+                <h1>Informacje o koncie</h1>
                 <p>Podstawowe informacje o Twoim koncie</p>
 
                 <article class="account-settings">
