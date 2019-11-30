@@ -56,9 +56,7 @@
               $ile_porcji = $_POST['ile_porcji'];
               $ile_kalorii = $_POST['ile_kalorii']; 
 
-              $today = date("Y-m-d H:i:s");
-
-              $zapytanie = $database -> exec("UPDATE `przepisy` SET `nazwa`='$nazwa',`przepis`='$przepis',`skladniki`= '$skladniki',`czas_przygotowania`= $czas_przygotowania,`poziom_trudnosci`='$poziom_trudnosci',`ile_porcji`=$ile_porcji,`ile_kalorii`= $ile_kalorii,`data_modyfikacji`=now() WHERE `id`=$id_przepisu");  
+              $zapytanie = $database -> exec("UPDATE `przepisy` SET `nazwa`='$nazwa',`przepis`='$przepis',`skladniki`= '$skladniki',`czas_przygotowania`= $czas_przygotowania,`poziom_trudnosci`='$poziom_trudnosci',`ile_porcji`=$ile_porcji,`ile_kalorii`= $ile_kalorii WHERE `id`=$id_przepisu");  
 
               // $zapytanie = $database->prepare("UPDATE `przepisy` SET `nazwa`=:nazwa, `przepis`=:przepis, `skladniki`=:skladniki, `czas_przygotowania`=:czas_przygotowania, `poziom_trudnosci`=:poziom_trudnosci, `ile_porcji`=:ile_porcji, `ile_kalorii`= :ile_kalorii, `data_modyfikacji`= now() WHERE `id`=$id_przepisu");
               // $zapytanie->bindValue('nazwa', $nickname, PDO::PARAM_STR);
