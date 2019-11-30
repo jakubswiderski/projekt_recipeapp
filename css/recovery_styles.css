@@ -48,3 +48,52 @@
     font-size: 16px;
     font-family: 'McLaren', cursive;
 }
+
+
+.content {
+    min-height: calc(100vh - 91px - 100px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../img/login-background-75.png");
+    background-size: cover;
+    text-align: center;
+}
+
+.content .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 45px 85px;
+    background: white;
+    border: 1px solid black;
+    border-radius: 15px;
+    background-color: #eeeeeed3;
+}
+
+.content .container h3 {
+    font-family: 'Ubuntu Mono', monospace;
+}
+
+.content .container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 15px;
+}
+
+.content .container form input {
+    width: 100%;
+}
+
+.content .container form label {
+    margin-top: 15px;
+}
+
+.content .container form input[type="submit"] {
+    margin-top: 30px;
+    width: 100%;
+}

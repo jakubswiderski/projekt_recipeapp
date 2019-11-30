@@ -44,27 +44,37 @@
           
            $id_przepisu = $_POST['id_edycji'];
 
-           if(isset($_POST['change-recipe'])) 
-           {
-             $id_uzytkownika = $_SESSION['id'];
-             $id_przepisu = $_POST['id_przepisu'];
-             $nazwa = $_POST['nazwa'];
-             $przepis = $_POST['przepis'];
-             $skladniki = $_POST['skladniki'];
-             $czas_przygotowania = $_POST['czas_przygotowania'];
-             $poziom_trudnosci = $_POST['poziom_trudnosci'];
-             $ile_porcji = $_POST['ile_porcji'];
-             $ile_kalorii = $_POST['ile_kalorii'];
+            if(isset($_POST['change-recipe'])) 
+            {
+              $id_uzytkownika = $_SESSION['id'];
+              $id_przepisu = $_POST['id_przepisu'];
+              $nazwa = $_POST['nazwa'];
+              $przepis = $_POST['przepis'];
+              $skladniki = $_POST['skladniki'];
+              $czas_przygotowania = $_POST['czas_przygotowania'];
+              $poziom_trudnosci = $_POST['poziom_trudnosci'];
+              $ile_porcji = $_POST['ile_porcji'];
+              $ile_kalorii = $_POST['ile_kalorii']; 
 
-             echo $nazwa;
+              $today = date("Y-m-d H:i:s");
 
-             $zapytanie = $database -> exec("UPDATE `przepisy` SET `nazwa`='$nazwa',`przepis`='$przepis',`skladniki`= '$skladniki',`czas_przygotowania`= $czas_przygotowania,`poziom_trudnosci`='$poziom_trudnosci',`ile_porcji`=$ile_porcji,`ile_kalorii`= $ile_kalorii WHERE `id`=$id_przepisu");
+              $zapytanie = $database -> exec("UPDATE `przepisy` SET `nazwa`='$nazwa',`przepis`='$przepis',`skladniki`= '$skladniki',`czas_przygotowania`= $czas_przygotowania,`poziom_trudnosci`='$poziom_trudnosci',`ile_porcji`=$ile_porcji,`ile_kalorii`= $ile_kalorii,`data_modyfikacji`=now() WHERE `id`=$id_przepisu");  
 
-             if($zapytanie)
-               header('Location: witryna_po_autoryzacji.php?result=19');
-             else
-               header('Location: witryna_po_autoryzacji.php?result=20');
-           }
+              // $zapytanie = $database->prepare("UPDATE `przepisy` SET `nazwa`=:nazwa, `przepis`=:przepis, `skladniki`=:skladniki, `czas_przygotowania`=:czas_przygotowania, `poziom_trudnosci`=:poziom_trudnosci, `ile_porcji`=:ile_porcji, `ile_kalorii`= :ile_kalorii, `data_modyfikacji`= now() WHERE `id`=$id_przepisu");
+              // $zapytanie->bindValue('nazwa', $nickname, PDO::PARAM_STR);
+              // $zapytanie->bindValue('przepis', $przepis, PDO::PARAM_STR);
+              // $zapytanie->bindValue('skladniki', $skladniki, PDO::PARAM_STR);
+              // $zapytanie->bindValue('czas_przygotowania', $czas_przygotowania, PDO::PARAM_INT);
+              // $zapytanie->bindValue('poziom_trudnosci', $poziom_trudnosci, PDO::PARAM_STR);
+              // $zapytanie->bindValue('ile_porcji', $ile_porcji, PDO::PARAM_INT);
+              // $zapytanie->bindValue('ile_kalorii', $ile_kalorii, PDO::PARAM_INT);
+              // $zapytanie->execute();
+
+              if($zapytanie)
+                header('Location: witryna_po_autoryzacji.php?result=19');
+              else
+                header('Location: witryna_po_autoryzacji.php?result=20');
+            }
 
            $zapytanie = $database -> query("SELECT * FROM przepisy WHERE id = $id_przepisu");
            $wynik = $zapytanie -> fetch();

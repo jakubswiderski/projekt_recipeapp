@@ -55,8 +55,8 @@
     
     <header class="login-panel" id="login-ref">
       <article>
-        <h1>Hello World!</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure amet adipisci tenetur dolores exercitationem voluptatum accusamus laudantium distinctio ipsa, facere repellat nesciunt iusto libero perspiciatis eaque qui corporis possimus autem. Nemo iste adipisci delectus quos vel similique eveniet dolorem, ipsum non esse rem, vero neque molestiae amet provident natus atque.</p>
+        <h1>RecipeApp</h1>
+        <p>Witaj na stronie poświęconej przepisom kulinarnym. Znajdziesz tu domowe przepisy na dania główne, desery, zupy oraz wszelkiego rodzaju napoje. Możesz dodawać swoje własne przepisy, dzieląc się nimi z innymi ludźmi. Co więcej możesz oceniać publikacje innych użytkowników, dzielić się swoimi spostrzeżeniami i wskazówkami.</p>
       </article>
       <section>
         <form action="logowanie.php" method="post">
@@ -115,9 +115,9 @@
               $numOfResults = $_POST['num-results'];
 
               if($category == 'all')
-                $zapytanie = $database->query("SELECT * FROM przepisy limit $numOfResults");
+                $zapytanie = $database->query("SELECT * FROM przepisy WHERE `czy_aktywne`=1 limit $numOfResults");
               else
-                $zapytanie = $database->query("SELECT * FROM przepisy where kategoria like '$category' limit $numOfResults");
+                $zapytanie = $database->query("SELECT * FROM przepisy WHERE `czy_aktywne`=1 where kategoria like '$category' limit $numOfResults");
 
               echo '<ul>';
               foreach($zapytanie as $wynik)
@@ -139,7 +139,7 @@
             } 
             else
             {
-              $zapytanie = $database->query("SELECT * FROM przepisy");
+              $zapytanie = $database->query("SELECT * FROM przepisy WHERE `czy_aktywne`=1");
               
               echo '<ul>';
               foreach($zapytanie as $wynik)
