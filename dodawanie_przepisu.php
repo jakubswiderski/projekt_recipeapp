@@ -12,28 +12,28 @@
     {
       $id_uzytkownika = $_SESSION['id'];
       //DODAC TRANSAKCJE insert into
-      $zapytanie = $database -> prepare('INSERT INTO `przepisy` (`nazwa`, `autor`, `przepis`, `skladniki`, `czas_przygotowania`, `poziom_trudnosci`, `ile_porcji`, `ile_kalorii`, `kategoria`, `data_dodania`, `data_modyfikacji`)	VALUES(
+      $zapytanie = $database -> prepare('INSERT INTO `przepisy` (`nazwa`, `autor`, `przepis`, `skladniki`, `czas_przygotowania`, `poziom_trudnosci`, `ile_porcji`, `ile_kalorii`, `kategoria`)	VALUES(
         :nazwa,
-		:autor,
-		:przepis,
-		:skladniki,
-		:czas_przygotowania,
+	:autor,
+	:przepis,
+	:skladniki,
+	:czas_przygotowania,
         :poziom_trudnosci,
         :ile_porcji,
         :ile_kalorii,
         :kategoria)');	
       
-		$zapytanie -> bindValue(':nazwa', $_POST['nazwa'], PDO::PARAM_STR);
-		$zapytanie -> bindValue(':autor', $id_uzytkownika, PDO::PARAM_INT);
-		$zapytanie -> bindValue(':przepis', $_POST['przepis'], PDO::PARAM_INT);
-		$zapytanie -> bindValue(':skladniki', $_POST['skladniki'], PDO::PARAM_STR);
-		$zapytanie -> bindValue(':czas_przygotowania', $_POST['czas_przygotowania'], PDO::PARAM_INT);
-		$zapytanie -> bindValue(':poziom_trudnosci', $_POST['poziom_trudnosci'], PDO::PARAM_STR);
-		$zapytanie -> bindValue(':ile_porcji', $_POST['ile_porcji'], PDO::PARAM_INT);
-		$zapytanie -> bindValue(':ile_kalorii', $_POST['ile_kalorii'], PDO::PARAM_INT);
-		$zapytanie -> bindValue(':kategoria', $_POST['kategoria'], PDO::PARAM_STR);
-      
-      $ilosc = $zapytanie -> execute();
+	$zapytanie -> bindValue(':nazwa', $_POST['nazwa'], PDO::PARAM_STR);
+	$zapytanie -> bindValue(':autor', $id_uzytkownika, PDO::PARAM_INT);
+	$zapytanie -> bindValue(':przepis', $_POST['przepis'], PDO::PARAM_INT);
+	$zapytanie -> bindValue(':skladniki', $_POST['skladniki'], PDO::PARAM_STR);
+	$zapytanie -> bindValue(':czas_przygotowania', $_POST['czas_przygotowania'], PDO::PARAM_INT);
+	$zapytanie -> bindValue(':poziom_trudnosci', $_POST['poziom_trudnosci'], PDO::PARAM_STR);
+	$zapytanie -> bindValue(':ile_porcji', $_POST['ile_porcji'], PDO::PARAM_INT);
+	$zapytanie -> bindValue(':ile_kalorii', $_POST['ile_kalorii'], PDO::PARAM_INT);
+	$zapytanie -> bindValue(':kategoria', $_POST['kategoria'], PDO::PARAM_STR);
+
+      	$ilosc = $zapytanie -> execute();
 
       if($ilosc)
         header('Location: witryna_po_autoryzacji.php?result=16');
