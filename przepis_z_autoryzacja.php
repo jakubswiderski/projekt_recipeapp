@@ -180,9 +180,12 @@
                             </header>
 
                             <section class="form-comment">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
                                 <form method="post">
-                                    <label for="ocena">Ocena</label>
-                                    <select name="ocena" id="ocena">
+                                    <label class="input-group-text" for="ocena">Ocena</label>
+                                    </div>
+                                    <select class="custom-select" name="ocena" id="ocena">
                                         <?php 
                                             $zapytanie = $database -> query('SELECT * FROM oceny');
                                             
@@ -191,11 +194,14 @@
                                                 echo '<option value="'.$wynik['ocena'].'">'.$wynik['ocena'].'</option>';
                                             }
                                             $zapytanie->closeCursor();
-                                            
                                         ?>
                                     </select>
-                                    <input type="hidden" name="id_przepisu" value="<?php echo $id; ?>">
-                                    <input type="text" name="komentarz" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="hidden" name="id_przepisu" value="<?php echo $id; ?>">
+                                        <label for="message-text" class="col-form-label">Komentarz</label>
+                                        <textarea class="form-control" id="message-text" type="text" name="komentarz" required></textarea>
+                                    </div>
                                     <input type="submit" class="btn btn-secondary" value="Dodaj komentarz" name="add-comment">
                                 </form>
                             </section>
