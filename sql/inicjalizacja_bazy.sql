@@ -36,14 +36,14 @@ create table if not exists `opinie` (
 	id_opinii int UNSIGNED primary key auto_increment,
 	id_przepisu int UNSIGNED not null,
 	id_autora int UNSIGNED not null,
-	id_oceny int UNSIGNED not null,
+	id_oceny tinyint not null,
 	komentarz text,
 	data_opinii datetime
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin;
 
 drop table if exists `oceny`;
 create table if not exists `oceny` (
-	ocena int UNSIGNED primary key
+	ocena tinyint primary key
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin;
 
 drop table if exists `przepisy`;
@@ -53,10 +53,10 @@ create table `przepisy` (
 	autor int UNSIGNED not null,
 	przepis text not null,
 	skladniki text not null,
-	czas_przygotowania int UNSIGNED not null,
+	czas_przygotowania tinyint not null,
 	poziom_trudnosci varchar(20) not null,
-	ile_porcji int UNSIGNED not null,
-	ile_kalorii int UNSIGNED not null,
+	ile_porcji tinyint not null,
+	ile_kalorii smallint UNSIGNED not null,
 	kategoria varchar(25) not null,
 	czy_aktywne bit not null DEFAULT 0,
 	data_dodania datetime,
@@ -269,6 +269,7 @@ SET NEW.data_modyfikacji = now();
 END;
 $$
 
+CREATE VIEW widok_przepis AS SELECT * FROM przepisy;
 	
 
 
