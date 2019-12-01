@@ -62,6 +62,9 @@
         case 20:
           echo '<div class="alert alert-danger" role="alert" style="margin:0;">Wystąpił błąd podczas aktualizacji przepisu!</div>';
           break; 
+        case 21:
+          echo '<div class="alert alert-success" role="alert" style="margin:0;">Przepis został pomyślnie zatwierdzony, wysłano e-mail informacyjny do autora.</div>';
+          break; 
         default:
           echo 'Nieznany błąd, spróbuj ponownie!';
           break;

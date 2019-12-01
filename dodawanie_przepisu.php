@@ -12,26 +12,26 @@
     {
       $id_uzytkownika = $_SESSION['id'];
       //DODAC TRANSAKCJE insert into
-      $zapytanie = $database -> prepare('INSERT INTO `przepisy` (`nazwa`, `autor`, `przepis`, `skladniki`, `czas_przygotowania`, `poziom_trudnosci`, `ile_porcji`, `ile_kalorii`, `kategoria`)	VALUES(
+      $zapytanie = $database -> prepare('INSERT INTO `przepisy` (`nazwa`, `autor`, `przepis`, `skladniki`, `czas_przygotowania`, `poziom_trudnosci`, `ile_porcji`, `ile_kalorii`, `kategoria`, `data_dodania`, `data_modyfikacji`)	VALUES(
         :nazwa,
-				:autor,
-				:przepis,
-				:skladniki,
-				:czas_przygotowania,
+		:autor,
+		:przepis,
+		:skladniki,
+		:czas_przygotowania,
         :poziom_trudnosci,
         :ile_porcji,
         :ile_kalorii,
         :kategoria)');	
       
-			$zapytanie -> bindValue(':nazwa', $_POST['nazwa'], PDO::PARAM_STR);
-			$zapytanie -> bindValue(':autor', $id_uzytkownika, PDO::PARAM_INT);
-			$zapytanie -> bindValue(':przepis', $_POST['przepis'], PDO::PARAM_INT);
-			$zapytanie -> bindValue(':skladniki', $_POST['skladniki'], PDO::PARAM_STR);
-			$zapytanie -> bindValue(':czas_przygotowania', $_POST['czas_przygotowania'], PDO::PARAM_INT);
-      $zapytanie -> bindValue(':poziom_trudnosci', $_POST['poziom_trudnosci'], PDO::PARAM_STR);
-      $zapytanie -> bindValue(':ile_porcji', $_POST['ile_porcji'], PDO::PARAM_INT);
-      $zapytanie -> bindValue(':ile_kalorii', $_POST['ile_kalorii'], PDO::PARAM_INT);
-      $zapytanie -> bindValue(':kategoria', $_POST['kategoria'], PDO::PARAM_STR);
+		$zapytanie -> bindValue(':nazwa', $_POST['nazwa'], PDO::PARAM_STR);
+		$zapytanie -> bindValue(':autor', $id_uzytkownika, PDO::PARAM_INT);
+		$zapytanie -> bindValue(':przepis', $_POST['przepis'], PDO::PARAM_INT);
+		$zapytanie -> bindValue(':skladniki', $_POST['skladniki'], PDO::PARAM_STR);
+		$zapytanie -> bindValue(':czas_przygotowania', $_POST['czas_przygotowania'], PDO::PARAM_INT);
+		$zapytanie -> bindValue(':poziom_trudnosci', $_POST['poziom_trudnosci'], PDO::PARAM_STR);
+		$zapytanie -> bindValue(':ile_porcji', $_POST['ile_porcji'], PDO::PARAM_INT);
+		$zapytanie -> bindValue(':ile_kalorii', $_POST['ile_kalorii'], PDO::PARAM_INT);
+		$zapytanie -> bindValue(':kategoria', $_POST['kategoria'], PDO::PARAM_STR);
       
       $ilosc = $zapytanie -> execute();
 
@@ -155,12 +155,6 @@
                           <div class="form-group col-12 col-lg-6">
                               <label for="ile_kalorii">Ile kalorii?</label>
                               <input type="number" class="form-control" id="ile_kalorii" placeholder="Ile kalorii zawiera przygotowany posiłek?" name="ile_kalorii" required>
-                              <div class="valid-feedback">W porządku!</div>
-                              <div class="invalid-feedback">Niepoprawne dane!</div>
-                          </div>
-                          <div class="form-group col-12 col-lg-6">
-                              <label for="fileToUpload">Zdjęcie</label><br>
-                              <input type="file" name="fileToUpload" id="fileToUpload">
                               <div class="valid-feedback">W porządku!</div>
                               <div class="invalid-feedback">Niepoprawne dane!</div>
                           </div>

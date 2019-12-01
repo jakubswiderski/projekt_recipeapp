@@ -95,9 +95,10 @@
                     foreach($zapytanie as $wynik)
                     { 
                         echo '<div class="card col-md-4 col-lg-3">
-                                <img src="recipePhotos/'.$wynik['id'].'.png" class="card-img-top" alt="jedzenie">
+                                <img src="recipePhotos/'; if($wynik['id'] <= 30) echo $wynik['id']; else echo 'test'; echo '.png" class="card-img-top" alt="zdjęcie jedzenia">
                                 <div class="card-body">
                                   <h5>'.$wynik['nazwa'].'</h5>
+								                  <span style="color: red;">'; if(!$wynik['czy_aktywne']) echo 'Oczekuje na autoryzację'; echo '</span>
                                   <div class="card-buttons">
                                     <form action="przepis_z_autoryzacja.php" method="post">
                                       <input type="hidden" name="id_przepisu" value="'.$wynik['id'].'">

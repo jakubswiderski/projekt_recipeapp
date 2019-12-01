@@ -74,18 +74,12 @@
                       $zapytanie = $database -> exec("DELETE FROM `przepisy` WHERE `id` = '$id_usuwania'");
                     }
 
-                    if(isset($_POST['zatwierdzanie_przepisu']))
-                    {
-                      $id_zatwierdzenia = $_POST['id_zatwierdzenia'];
-                      $zapytanie = $database -> exec("UPDATE przepisy SET `czy_aktywne`=1 WHERE `id` = '$id_zatwierdzenia'");
-                    }
-
                     $zapytanie = $database -> query("SELECT * FROM przepisy WHERE czy_aktywne = 0");
                     echo '<div class="wrap">';
                     foreach($zapytanie as $wynik)
                     { 
                       echo '<div class="card col-md-4 col-lg-3">
-                              <img src="recipePhotos/'.$wynik['id'].'.png" class="card-img-top" alt="jedzenie">
+                              <img src="recipePhotos/'; if($wynik['id'] <= 30) echo $wynik['id']; else echo 'test'; echo '.png" class="card-img-top" alt="zdjęcie jedzenia">
                               <div class="card-body">
                                 <h5>'.$wynik['nazwa'].'</h5>
                                 <div class="card-buttons">
@@ -93,7 +87,7 @@
                                     <input type="hidden" name="id_przepisu" value="'.$wynik['id'].'">
                                     <input type="submit" class="btn btn-primary" name="wyswietl_przepis" value="Sprawdź przepis">
                                   </form>
-                                  <form method="post">
+                                  <form method="post" action="zatwierdzanie_przepisu.php">
                                     <input type="hidden" name="id_zatwierdzenia" value="'.$wynik['id'].'">
                                     <input type="submit" class="btn btn-success" value="Zatwierdź przepis" name="zatwierdzanie_przepisu">
                                   </form>
@@ -130,7 +124,7 @@
                     foreach($zapytanie as $wynik)
                     { 
                       echo '<div class="card col-md-4 col-lg-3">
-                              <img src="recipePhotos/'.$wynik['id'].'.png" class="card-img-top" alt="jedzenie">
+                              <img src="recipePhotos/'; if($wynik['id'] <= 30) echo $wynik['id']; else echo 'test'; echo '.png" class="card-img-top" alt="zdjęcie jedzenia">
                               <div class="card-body">
                                 <h5>'.$wynik['nazwa'].'</h5>
                                 <div class="card-buttons">

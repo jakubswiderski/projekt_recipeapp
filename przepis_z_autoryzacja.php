@@ -89,7 +89,9 @@
                                 </section>
 
                                 <section class="recipe-image col-12 col-lg-6">
-                                    <img src="recipePhotos/<?php echo $wynik['id']; ?>.png" alt="<?php echo $wynik['nazwa']; ?>" class="img-fluid">
+                                <?php
+                                    echo '<img src="recipePhotos/'; if($wynik['id'] <= 30) echo $wynik['id']; else echo 'test'; echo '.png" class="card-img-top" alt="zdjęcie jedzenia">';
+                                ?>
                                 </section>
                             </header>
 
